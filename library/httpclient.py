@@ -21,11 +21,9 @@ class HttpClient:
             headers = {}
 
         if self.disable_ssl_verify:
-            response = self.client.get(url, headers=headers, data=data, json=json, params=params
-                                       , verify=False, timeout=self.timeout, *args, **kwargs)
+            response = self.client.get(url, headers=headers, data=data, json=json, params=params, verify=False, timeout=self.timeout, *args, **kwargs)
         else:
-            response = self.client.get(url, headers=headers, data=data, json=json, params=params
-                                       , timeout=self.timeout, *args, **kwargs)
+            response = self.client.get(url, headers=headers, data=data, json=json, params=params, timeout=self.timeout, *args, **kwargs)
         response.encoding = 'utf-8'
         print(f'{response.json()}')
 
