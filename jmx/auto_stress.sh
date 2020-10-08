@@ -18,7 +18,7 @@ for num in "${thread_number_array[@]}"
 do
   # 生成对应压测线程的jmx文件
   export jmx_filename="${jmx_template}_${num}${suffix}"
-  export jtl_jmx_filename="test_${num}.jtl"
+  export jtl_filename="test_${num}.jtl"
   export web_report_path_name="web_${num}"
 
   rm -f ${jmx_filename} ${jtl_filename}
@@ -34,10 +34,10 @@ do
   fi
 
   # JMeter 静默压测
-  ${JMETER_HOME}/bin/jmeter -n -t ${jmx_filename} -l ${jtl_filename}
+  jmeter -n -t ${jmx_filename} -l ${jtl_filename}
 
   # 生成Web压测报告
-  ${JMETER_HOME}/bin/jmeter -g ${jtm_filename} -e -o ${web_report_path_name}
+  jmeter -g ${jtl_filename} -e -o ${web_report_path_name}
 
   rm -f ${jmx_filename} ${jtl_filename}
 
