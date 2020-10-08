@@ -33,10 +33,10 @@ do
     fi
 
     # JMeter 静默压测
-    $jmeter -n -t ${jmx_filename} -l ${jtl_filename}
+    jmeter -n -t ${jmx_filename} -l ${jtl_filename}
 
     # 生成Web压测报告
-    $jmeter -g ${jtl_filename} -e -o ${web_report_path_name}
+    jmeter -g ${jtl_filename} -e -o ${web_report_path_name}
 
     rm -f ${jmx_filename} ${jtl_filename}
 done
